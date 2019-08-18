@@ -18,8 +18,8 @@ class  App extends Component {
     (`https://www.food2fork.com/api/search?key=${API_KEY}&q=${recipeName}&count=10`);
     
     const data = await api_call.json();
-    this.setState({ recipes: data.recipes });
-    console.log(this.state.recipes);
+    
+    console.log(data.recipes[0]);
   }
   render() {
     return (
@@ -27,10 +27,7 @@ class  App extends Component {
         <header className="App-header">
           <h1 className="app-title">Recipe Search</h1>
         </header>
-        <Form getRecipe = {this.getRecipe} />
-        { this.state.recipes.map((recipe) => {
-          return <p key={recipe.recipe_id}> { recipe.title } </p>
-        }) }
+        <Form getRecipe = {this.getRecipe} /> 
       </div>
     );
   }
